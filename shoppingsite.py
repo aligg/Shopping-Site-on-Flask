@@ -78,6 +78,26 @@ def show_shopping_cart():
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
 
+    #session["cart"].get_by_id()
+    print "\n\n\n", session["cart"], "\n \n \n"
+
+    #print melon
+
+    total_cost = 0
+
+    for melon_id in session["cart"]:
+        quantity = session["cart"][melon_id]
+        melon_dict = {}
+        melon_object = melons.get_by_id(melon_id)
+        melon_object.quantity = quantity
+        melon_object.total_cost = melon_object.price * quantity
+
+        melon_dict[melon_object.common_name] = {"qty" : quantity, "price": melon_object.price, "total":melon_object.total_cost}
+        print melon_dict
+
+
+
+
 
     return render_template("cart.html")
 
@@ -100,6 +120,8 @@ def add_to_cart(melon_id):
     # - increment the count for that melon id by 1
     # - flash a success message
     # - redirect the user to the cart page
+
+
 
 
     if "cart" not in session:

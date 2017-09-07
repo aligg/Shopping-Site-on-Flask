@@ -12,7 +12,9 @@
             <th>Total</th>
         </tr>
         </thead>
+
         <tbody>
+            {% for melon in cart_list %}
         <tr>
             <td>Ancient Watermelon</td>
             <td>5</td>
@@ -37,6 +39,7 @@
             <td>$3.00</td>
             <td>$6.00</td>
         </tr>
+            {% endfor %}
         </tbody>
     </table>
 
